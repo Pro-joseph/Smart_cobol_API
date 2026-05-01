@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'ibm_watsonx' => [
+        'api_key' => env('IBM_WATSONX_API_KEY'),
+        'project_id' => env('IBM_WATSONX_PROJECT_ID'),
+        'url' => env('IBM_WATSONX_URL', 'https://us-south.ml.cloud.ibm.com'),
+    ],
+
 ];
