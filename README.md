@@ -1,58 +1,333 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Smart COBOL API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> AI-powered COBOL to Laravel API converter - Modernize legacy COBOL code into production-ready REST APIs
 
-## About Laravel
+[![Laravel](https://img.shields.io/badge/Laravel-13.0-red.svg)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.3-blue.svg)](https://php.net)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Smart COBOL API is a web application that automatically converts legacy COBOL code into modern Laravel REST APIs using AI assistance. Upload your COBOL files, and get production-ready Laravel code with built-in testing capabilities.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### ✨ Key Features
 
-## Learning Laravel
+- 📤 **COBOL File Upload** - Support for .cbl, .cob, and .txt files
+- 🔍 **Intelligent Parser** - Extracts ADD/SUBTRACT operations from COBOL code
+- 🤖 **AI Code Generation** - Powered by IBM watsonx.ai (Granite 13B model)
+- 🔄 **Fallback Generator** - Works without AI with template-based generation
+- 🧪 **Live API Testing** - Built-in test interface with real-time execution
+- 🎨 **Modern UI** - Responsive design with beautiful gradients and animations
+- ⚡ **Fast Setup** - One-command installation and development
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Tech Stack
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Backend:** PHP 8.3, Laravel 13
+- **Frontend:** Vite 8.0, Tailwind CSS 4.0
+- **Database:** SQLite (default)
+- **AI:** IBM watsonx.ai (optional)
+- **Testing:** PHPUnit, Mockery
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 📦 Installation
 
-## Agentic Development
+### Prerequisites
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- PHP 8.3 or higher
+- Composer
+- Node.js & NPM
+- SQLite (or your preferred database)
+
+### Quick Start
 
 ```bash
-composer require laravel/boost --dev
+# Clone the repository
+git clone https://github.com/yourusername/smart-cobol-api.git
+cd smart-cobol-api
 
-php artisan boost:install
+# Install dependencies and setup
+composer setup
+
+# Start development server
+composer dev
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+The application will be available at `http://localhost:8000`
 
-## Contributing
+### Manual Setup
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# Install PHP dependencies
+composer install
 
-## Code of Conduct
+# Copy environment file
+cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Generate application key
+php artisan key:generate
 
-## Security Vulnerabilities
+# Run migrations
+php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Install frontend dependencies
+npm install
 
-## License
+# Build assets
+npm run build
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Start server
+php artisan serve
+```
+
+## ⚙️ Configuration
+
+### Environment Variables
+
+Create a `.env` file from `.env.example` and configure:
+
+```env
+# Application
+APP_NAME="Smart COBOL API"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# Database (SQLite by default)
+DB_CONNECTION=sqlite
+
+# IBM watsonx.ai (Optional - uses fallback if not configured)
+IBM_WATSONX_API_KEY=your_api_key_here
+IBM_WATSONX_PROJECT_ID=your_project_id_here
+IBM_WATSONX_URL=https://us-south.ml.cloud.ibm.com
+```
+
+### Getting IBM watsonx.ai Credentials
+
+1. Sign up at [IBM Cloud](https://cloud.ibm.com)
+2. Create a watsonx.ai project
+3. Generate an API key from IAM
+4. Copy your project ID from watsonx.ai dashboard
+
+**Note:** The application works without AI credentials using the fallback generator.
+
+## 🎯 Usage
+
+### 1. Upload COBOL File
+
+- Navigate to `http://localhost:8000`
+- Click "Choose COBOL File"
+- Select your .cbl, .cob, or .txt file
+- Click "Generate API"
+
+### 2. View Parsed Operations
+
+The parser extracts operations like:
+- `ADD AMOUNT TO BALANCE`
+- `SUBTRACT TAX FROM BALANCE`
+
+### 3. Get Generated Code
+
+Receive production-ready Laravel code including:
+- Service class with business logic
+- Controller with validation
+- API route definitions
+
+### 4. Test Live
+
+Use the built-in testing interface to:
+- Input test values
+- Execute operations
+- View JSON responses in real-time
+
+## 📁 Project Structure
+
+```
+smart-cobol-api/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── CobolController.php      # Main controller
+│   ├── Services/
+│   │   ├── CobolParser.php          # COBOL parsing logic
+│   │   └── AiCobolGenerator.php     # AI code generation
+│   └── Models/
+├── resources/
+│   └── views/
+│       └── main.blade.php           # Main UI
+├── routes/
+│   └── web.php                      # Application routes
+├── storage/
+│   └── app/
+│       └── public/cobol/            # Uploaded COBOL files
+├── tests/                           # Test suite
+├── code.cbl                         # Sample COBOL file
+└── README.md
+```
+
+## 🔧 Development
+
+### Available Commands
+
+```bash
+# Start development environment (server + queue + vite)
+composer dev
+
+# Run tests
+composer test
+
+# Code formatting
+./vendor/bin/pint
+
+# Clear caches
+php artisan optimize:clear
+```
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/` | Main upload interface |
+| POST | `/generate` | Process COBOL and generate API |
+| POST | `/cobol/test` | Test generated API with data |
+| POST | `/cobol/run` | Execute operations (planned) |
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+composer test
+```
+
+Or with PHPUnit directly:
+
+```bash
+./vendor/bin/phpunit
+```
+
+## 📝 Sample COBOL Code
+
+The included `code.cbl` demonstrates supported operations:
+
+```cobol
+ADD AMOUNT TO BALANCE.
+SUBTRACT TAX FROM BALANCE.
+
+IF BALANCE > 1000
+   SUBTRACT TAX FROM BALANCE
+END-IF.
+
+ADD INCOME TO BALANCE.
+SUBTRACT RENT FROM BALANCE.
+ADD REFUND TO BALANCE.
+SUBTRACT PENALTY FROM BALANCE.
+```
+
+## 🤖 How It Works
+
+### 1. COBOL Parser
+- Uses regex patterns to identify operations
+- Extracts variables and operation types
+- Deduplicates using MD5 hashing
+- Returns structured JSON
+
+### 2. AI Code Generation
+- Sends parsed operations to IBM watsonx.ai
+- Uses Granite 13B Chat model
+- Generates complete Laravel code
+- Falls back to template if AI unavailable
+
+### 3. Fallback Generator
+- Creates service class with execute() method
+- Generates controller with validation
+- Provides API route definitions
+- Ensures application always works
+
+## 🚀 Deployment
+
+### Production Setup
+
+```bash
+# Set environment to production
+APP_ENV=production
+APP_DEBUG=false
+
+# Optimize application
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Build assets
+npm run build
+```
+
+### Server Requirements
+
+- PHP 8.3+
+- Composer
+- Web server (Apache/Nginx)
+- SQLite or MySQL/PostgreSQL
+- Node.js (for asset compilation)
+
+## 🔐 Security
+
+- CSRF protection enabled
+- File upload validation
+- Input sanitization
+- Environment variable protection
+- Secure API token handling
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📈 Roadmap
+
+- [ ] Support for more COBOL operations (MULTIPLY, DIVIDE, MOVE)
+- [ ] Parse COBOL data structures (WORKING-STORAGE)
+- [ ] Database persistence for generated APIs
+- [ ] Multiple AI provider support (OpenAI, Anthropic)
+- [ ] Syntax highlighting for generated code
+- [ ] Export functionality (ZIP download)
+- [ ] API documentation generation
+- [ ] Batch file processing
+
+## 🐛 Known Issues
+
+- Parser currently supports only ADD/SUBTRACT operations
+- Conditional logic (IF statements) not fully processed
+- `/cobol/run` endpoint not yet implemented
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 👥 Authors
+
+- **Your Name** - Initial work
+
+## 🙏 Acknowledgments
+
+- Laravel Framework team
+- IBM watsonx.ai team
+- COBOL community
+- Open source contributors
+
+## 📞 Support
+
+For support, email support@example.com or open an issue on GitHub.
+
+## 🔗 Links
+
+- [Laravel Documentation](https://laravel.com/docs)
+- [IBM watsonx.ai](https://www.ibm.com/watsonx)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Vite](https://vitejs.dev)
+
+---
+
+<p align="center">Made with ❤️ for COBOL modernization</p>
