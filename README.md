@@ -317,9 +317,9 @@ This project is open-sourced software licensed under the [MIT license](https://o
 - COBOL community
 - Open source contributors
 
-## 📞 Support
+## 📞 More info
 
-For support, email support@example.com or open an issue on GitHub.
+For support, email jdirayoussef@gmail.com or open an issue on GitHub.
 
 ## 🔗 Links
 
