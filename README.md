@@ -319,7 +319,7 @@ This project is open-sourced software licensed under the [MIT license](https://o
 
 ## 📞 More info
 
-For support, email jdirayoussef@gmail.com or open an issue on GitHub.
+For support, email jdirayoussef@gmail.com or idbelhajayoub@gmail.com open an issue on GitHub.
 
 ## 🔗 Links
 
